@@ -1,55 +1,82 @@
-# Inserts a blank line between shell prompts
+# Adds a blank line between prompts for visual breathing room
 add_newline = true
 
-# Prompt format
+# Main prompt format
 format = """
-[](fg:#ff5555)\
+
+[](fg:#3d59a1)\
 $directory\
-[](fg:#ff5555 bg:#bd93f9)\
-[](fg:#bd93f9 bg:#8be9fd)\
+[](fg:#3d59a1 bg:#2b3462)\
 $git_branch\
-[](fg:#8be9fd bg:#50fa7b)\
+[](fg:#2b3462 bg:#394b70)\
 $git_status\
-[](fg:#50fa7b bg:#f1fa8c)\
+[](fg:#394b70 bg:#565f89)\
 $nodejs\
-[](fg:#f1fa8c bg:#000000)\
+[](fg:#565f89 bg:#7aa2f7)\
+$python\
+[](fg:#7aa2f7 bg:#414868)\
+$memory_usage\
+[](fg:#414868 bg:#e0af68)\
+$battery\
+[](fg:#e0af68 bg:#bb9af7)\
 $time\
-[](fg:#000000)\
+[](fg:#bb9af7)\
 $character
 """
 
-# Directory odule
+# Directory module
 [directory]
-style = "bg:#ff5555 fg:#282a36"
+style = "bg:#3d59a1 fg:#c0caf5"
 format = "[ $path ]($style)"
 truncation_length = 3
 truncation_symbol = ""
 
-# Git branch module
+# Git branch
 [git_branch]
-style = "bg:#8be9fd fg:#282a36"
+style = "bg:#2b3462 fg:#c0caf5"
 format = "[ $symbol$branch ]($style)"
 symbol = ""
 
-# Git status module
+# Git status
 [git_status]
-style = "bg:#50fa7b fg:#282a36"
+style = "bg:#394b70 fg:#c0caf5"
 format = "[ $all_status ]($style)"
 
-# Node.js module
+# Node.js
 [nodejs]
-style = "bg:#f1fa8c fg:#282a36"
+style = "bg:#565f89 fg:#c0caf5"
 format = "[ $version ]($style)"
 
-# Time module
+# Python
+[python]
+style = "bg:#7aa2f7 fg:#1a1b26"
+format = "[🐍 $version ($virtualenv) ]($style)"
+python_binary = "python3"
+
+# Memory Usage
+[memory_usage]
+disabled = false
+threshold = 50
+style = "bg:#414868 fg:#c0caf5"
+format = "[ RAM: $ram_pct ]($style)"
+
+# Battery
+[battery]
+format = "[ $symbol$percentage ]($style)"
+
+[[battery.display]]
+threshold = 90
+style = "bg:#e0af68 fg:#1a1b26"
+
+# Time
 [time]
 disabled = false
 time_format = "%R"
-style = "bg:#000000 fg:#f8f8f2"
+style = "bg:#bb9af7 fg:#1a1b26"
 format = "[ $time ]($style)"
 
-# Character module
+# Prompt symbol
 [character]
-success_symbol = "[➜](bold fg:#50fa7b)"
-error_symbol = "[✗](bold fg:#ff5555)"
+success_symbol = "[➜](bold fg:#9ece6a)"
+error_symbol = "[✗](bold fg:#f7768e)"
 
